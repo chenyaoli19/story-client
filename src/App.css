@@ -23,12 +23,12 @@
   to { transform: rotate(360deg); }
 }
 
-a{
+.header a{
   margin: 5px;
 }
-a,a:visited{
-  color:blue
+.header a,.header a:visited{
+  color: #42496d
 }
-a.active{
-  color:red
+.header a.active{
+  color: #a5265d
 }
