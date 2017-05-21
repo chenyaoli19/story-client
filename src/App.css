@@ -32,6 +32,9 @@
 .header a.active{
   color: #a5265d
 }
+.header div{
+  margin-top: 20px;
+}
 
 .footer div {
   margin-top: 20px;
