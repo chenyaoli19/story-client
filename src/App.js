@@ -8,9 +8,8 @@ import Header from './shared/header/Header'
 import Footer from './shared/footer/Footer'
 import Home from './features/home'
 import CreateStory from './features/createStory'
+import About from './features/about'
 
-// const Home = () => <h1>Home</h1>
-const About = () => <h1>关于</h1>
 const App = () => (
   <Router>
     <div>
