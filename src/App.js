@@ -7,32 +7,16 @@ import {BrowserRouter as Router,
         Switch,
         Redirect
 } from 'react-router-dom';
-
-
-const isActiveFunc = (match, location) => {
-  return match
-}
+import Header from './shared/header/Header'
+import Footer from './shared/footer/Footer'
 const Home = () => <h1>Home</h1>
 const About = () => <h1>About</h1>
 const Contact = () => <h1>Contact</h1>
-const Links = () => (
-  <nav>
-    <NavLink
-      isActive={isActiveFunc}
-      to="/home">Home</NavLink>
-    <NavLink
-      isActive={isActiveFunc}
-      to="/about">About</NavLink>
-    <NavLink
-      isActive={isActiveFunc}
-      to="/contact">Contact</NavLink>
-  </nav>
-)
 
 const App = () => (
   <Router>
     <div>
-      <Links />
+      <Header/>
       <Switch>
         <Route path="/home" component = {Home}/>
         <Route path="/about" component = {About}/>
@@ -45,6 +29,7 @@ const App = () => (
           )}/>
         <Route render={()=><h1>Page not found</h1>}/>
       </Switch>
+      <Footer/>
     </div>
   </Router>
 )
