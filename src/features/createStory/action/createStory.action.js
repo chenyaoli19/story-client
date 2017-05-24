@@ -1,3 +1,4 @@
+import * as types from '../../../constants/actionTypes'
 export function createStory(story){
-  return { type: 'CREATE_STORY', story }
+  return { type: types.CREATE_STORY, story }
 }
