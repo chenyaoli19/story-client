@@ -5,27 +5,12 @@ import {Grid,
   Well
 } from 'react-bootstrap'
 import {connect} from 'react-redux'
+import * as eventStoryAction from './action/eventStory.action.js'
+import {bindActionCreators} from 'redux'
 
 class EventStoryListPage extends React.Component{
   constructor(props, context){
     super(props, context)
-
-    this.state={
-      stories: [{
-        id: '1',
-        year: '1998',
-        storyTitle: '我的叔叔',
-        eventName: '洪水',
-        content: '这天是周日...'
-      },
-      {
-        id: '2',
-        year: '1998',
-        storyTitle: '再见了，家',
-        eventName: '洪水',
-        content: '从没想过...'
-      }]
-    }
   }
 
   storyRow(story, index){
@@ -44,7 +29,7 @@ class EventStoryListPage extends React.Component{
       <div>
         <Grid>
         <h3>98'洪水 所有的故事</h3>
-        {this.state.stories.map(this.storyRow)}
+        {this.props.stories.map(this.storyRow)}
         </Grid>
       </div>
     )
@@ -52,14 +37,20 @@ class EventStoryListPage extends React.Component{
 }
 
 EventStoryListPage.PropTypes = {
-  dispatch: PropTypes.func.isRequired,
+  actions: PropTypes.object.isRequired,
   stories: PropTypes.array.isRequired
 }
 
 function mapStateToProps(state, ownProps){
   return {
-    stories: state.stories
+    stories: state.loadedStories
   }
 }
 
-export default connect(mapStateToProps)(EventStoryListPage)
+function mapDispatchToProps(dispatch){
+  return {
+    actions: bindActionCreators(eventStoryAction, dispatch)
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(EventStoryListPage)
