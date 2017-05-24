@@ -6,7 +6,7 @@ import {Grid,
 } from 'react-bootstrap'
 import {connect} from 'react-redux'
 
-class EventStoryList extends React.Component{
+class EventStoryListPage extends React.Component{
   constructor(props, context){
     super(props, context)
 
@@ -51,7 +51,7 @@ class EventStoryList extends React.Component{
   }
 }
 
-EventStoryList.PropTypes = {
+EventStoryListPage.PropTypes = {
   dispatch: PropTypes.func.isRequired,
   stories: PropTypes.array.isRequired
 }
@@ -62,4 +62,4 @@ function mapStateToProps(state, ownProps){
   }
 }
 
-export default connect(mapStateToProps)(EventStoryList)
+export default connect(mapStateToProps)(EventStoryListPage)

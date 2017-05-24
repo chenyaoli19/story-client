@@ -2,6 +2,7 @@ import React from 'react'
 import {PropTypes} from 'prop-types'
 import '../../App.css';
 import {connect} from 'react-redux'
+import {bindActionCreators} from 'redux'
 import { Button,
          DropdownButton,
          MenuItem,
@@ -13,7 +14,7 @@ import { Button,
  } from 'react-bootstrap'
  import * as storyAction from './action/createStory.action.js'
 
-class CreateStory extends React.Component {
+class CreateStoryPage extends React.Component {
   constructor(props, context){
     super(props, context)
 
@@ -55,9 +56,7 @@ class CreateStory extends React.Component {
   }
 
   onClickSave(){
-    // alert(`saving ${this.state.story.storyTitle}`)
-    debugger;
-    this.props.dispatch(storyAction.createStory(this.state.story))
+    this.props.actions.createStory(this.state.story)
   }
   render() {
     return (
@@ -101,10 +100,21 @@ class CreateStory extends React.Component {
   }
 }
 
+CreateStoryPage.propTypes = {
+  story: PropTypes.object.isRequired,
+  actions: PropTypes.object.isRequired
+}
+
 function mapStateToProps(state, ownProps){
   return {
     story: state.story
   }
 }
 
-export default connect(mapStateToProps)(CreateStory)
+function mapDispatchToProps(dispatch){
+  return {
+    actions: bindActionCreators(storyAction, dispatch)
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CreateStoryPage)

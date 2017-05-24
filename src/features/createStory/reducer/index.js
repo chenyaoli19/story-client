@@ -1,8 +1,8 @@
 import {combineReducers} from 'redux'
-import stories from './createStory.reducer.js'
+import story from './createStory.reducer.js'
 
 const rootReducer = combineReducers({
-  stories
+  story
 })
 
 export default rootReducer
